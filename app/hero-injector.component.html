@@ -1,0 +1,14 @@
+<form #heroForm="ngForm" (ngSubmit)="addHero()">
+    <label for="name">Hero name:</label>
+    <input type="text" id="name"
+           required
+           name="name" [(ngModel)]="hero.name"
+           #name="ngModel" >
+    <button type="submit"
+            [disabled]="!heroForm.form.valid" >Add</button>
+    <div *ngIf="name.errors && (name.dirty || name.touched)">
+        <div [hidden]="!name.errors.required" style="color: red">
+            Name it!
+        </div>
+    </div>
+</form>
